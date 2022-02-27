@@ -2,6 +2,7 @@
 /.idea
 /.vs
 /.vscode
+*.iml
 
 # Build Directories
 /out
