@@ -1,3 +1,4 @@
+import com.google.gson.GsonBuilder;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.util.ArrayList;
@@ -23,7 +24,6 @@ public class StringUtils
             }
 
         }
-
         catch(Exception e)
         {
             ErrorHandle.handleException(e);
@@ -76,7 +76,6 @@ public class StringUtils
         }
 
         return result;
-
     }
 
 
@@ -112,5 +111,19 @@ public class StringUtils
         }
 
         return (treeLayer.size() == 1) ? treeLayer.get(0) : "";
+    }
+
+
+    //Returns difficulty string target, to compare to hash.
+    // example: difficulty of 5 will return "00000"
+    public static String getDifficultyString(int difficulty)
+    {
+        return new String(new char[difficulty]).replace('\0', '0');
+    }
+
+
+    //Shorthand helper to turn Object into a json string
+    public static String getJson(Object o) {
+        return new GsonBuilder().setPrettyPrinting().create().toJson(o);
     }
 }
